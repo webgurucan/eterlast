@@ -1,4 +1,4 @@
-import {FC, useCallback, useState, useEffect } from 'react';
+import {FC, useCallback, useState } from 'react';
 import './App.css';
 import enableWeb3 from './web3enable';
 import { ethers } from 'ethers';
@@ -53,7 +53,7 @@ const App: FC = () => {
         //At the moment, it will be called since mintNFT will be failed since wrong smart contract Address
         showNFTData();
       }
-  },[])
+  },[showNFTData, contract])
 
   return (
     <div className="App">

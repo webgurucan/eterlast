@@ -1,4 +1,4 @@
-import {FC, useCallback, useState } from 'react';
+import {FC, useCallback, useState, useEffect } from 'react';
 import './App.css';
 import enableWeb3 from './web3enable';
 import { ethers } from 'ethers';
@@ -58,7 +58,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <p>{slectedAddress}</p>
-      <p>Network: {chainId === "0x3" ? "Ropesten" : "Other Network"}</p>
+      <p>Network: {chainId === "0x3" ? "Ropesten" : "-"}</p>
       <div>
         <button onClick={connectWallet} disabled={chainId !== "0x00"}>Connect Wallet</button>
       </div>

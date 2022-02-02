@@ -16,5 +16,4 @@ It assumes that all NFT metadata has been deployed on IPFS such as pinata, and i
 
 ## Note
 1. At the moment, it mints 4 NFTs. It assumes all URIs has been deployed on IPFS already.
-2. It calls fake APIs to get NFT info minted
-https://jsonplaceholder.typicode.com/users
+2. It calls fake APIs to get NFT info minted. At the moment, I used fake URL of https://jsonplaceholder.typicode.com/users

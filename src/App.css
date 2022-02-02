@@ -1,39 +1,26 @@
 .App {
-  text-align: center;
+  width: 50vw;
+  margin: auto;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-container {
+  text-align: left;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.form-container label {
+  display: block;
 }
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.form-container input {
+  display: block;
+  padding: 3px;
 }
-
-.App-link {
-  color: rgb(112, 76, 182);
+.form-container div {
+  margin-bottom: 5px;
 }
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.mint-btn-container {
+  margin-top: 30px;
+}
+.connect-wallet-container {
+  margin: 30px 0;
+}
+button {
+  padding: 5px 10px;
 }

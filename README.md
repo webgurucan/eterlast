@@ -1,7 +1,12 @@
 # Eterlast Test Project
 
+1. Method 1
 It will mint 4 NFTs when you click "mint" button.
-It assumes that all NFT metadata has been deployed on IPFS such as pinata, and it calls the smart contract function with the count of NFTs to mint. The smart contract will increase the IDs and mint it
+It assumes that all NFT metadata has been deployed on IPFS such as pinata, and it calls the smart contract function with the count of NFTs to mint. The smart contract will increase the IDs and mint them.
+
+2. Method 2
+You can input fields in the form. You can prepare multi data before minting NFTs.
+Then you can mint the NFTs by sending them to server. Backend will handle the request (storing data to IPFS and mint nfts)
 
 ## Functions
 1. Connect your wallet

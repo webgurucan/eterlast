@@ -1,19 +1,21 @@
-import React, { useCallback, useState } from 'react';
+import {FC, useCallback, useState } from 'react';
 import './App.css';
 import enableWeb3 from './web3enable';
 import { ethers } from 'ethers';
 import abi from './web3/config/abi/rapsAbi.json';
 import axios from "axios";
 
-function App() {
-  const _contractAddress:string = "0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA"; // Smart contract address
+const App: FC = () => {
+  const contractAddress:string = "0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA"; // Smart contract address, Fake One
+  const ropstenUrl:string = "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+  const FAKE_URI_URL:string = `https://jsonplaceholder.typicode.com/users`;
+
+  
   const [slectedAddress, setSelectedAddress]= useState("0x00");
   const [chainId, setChainId]= useState("0x00");
-  const provider = new ethers.providers.JsonRpcProvider("https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161");
+  const provider = new ethers.providers.JsonRpcProvider(ropstenUrl);
   const signer = provider.getSigner();
-  const contract = new ethers.Contract(_contractAddress, abi, signer);
-
-  const FAKE_URI_URL:string = `https://jsonplaceholder.typicode.com/users`;
+  const contract = new ethers.Contract(contractAddress, abi, signer);
 
 
   const connectWallet = () => {
@@ -27,32 +29,29 @@ function App() {
     return data;
   };
 
+  const showNFTData = async() => {
+    getNFTData().then((response) => {
+      let result:object = {
+        "creator_wallet_id": slectedAddress,
+        "creator_network": chainId == "0x3" ? "Ropesten" : "Other Network",
+        "assets": response
+      }
+      console.log(result);
+    })
+    .catch((error) => {
+      //TODO: You should do something when there are errors
+      console.log("Nothing to show");
+    });
+  }
+
   const callContractMethods = useCallback(async () =>{
       try{
-        let response = await contract.mintNFTs(4); //Mint 4 NFTs
-        
-        getNFTData().then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          //TODO: You should do something when there are errors
-          console.log("Nothing to show");
-        });
+        await contract.mintNFTs(4); //Mint 4 NFTs
+        showNFTData();
         
       } catch(err) {
-        
-        getNFTData().then((response) => {
-          let result:object = {
-            "creator_wallet_id": slectedAddress,
-            "creator_network": chainId == "0x3" ? "Ropesten" : "Other Network",
-            "assets": response
-          }
-          console.log(result);
-        })
-        .catch((error) => {
-          //TODO: You should do something when there are errors
-          console.log("Nothing to show");
-        });
+        //At the moment, it will be called since mintNFT will be failed since wrong smart contract Address
+        showNFTData();
       }
   },[slectedAddress, chainId])
 

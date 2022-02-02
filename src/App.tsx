@@ -13,13 +13,13 @@ function App() {
   const signer = provider.getSigner();
   const contract = new ethers.Contract(_contractAddress, abi, signer);
 
-  const FAKE_URI_URL = `https://jsonplaceholder.typicode.com/users`;
+  const FAKE_URI_URL:string = `https://jsonplaceholder.typicode.com/users`;
 
 
-  const enable = () => {
-    const address = enableWeb3();
-    setSelectedAddress(address.address);
-    setChainId(address.chainId)
+  const connectWallet = () => {
+    const addressInfo = enableWeb3();
+    setSelectedAddress(addressInfo.address);
+    setChainId(addressInfo.chainId)
   }
 
   const getNFTData = async () => {
@@ -29,7 +29,8 @@ function App() {
 
   const callContractMethods = useCallback(async () =>{
       try{
-        let response = await contract.mintNFTs(4); //Mint 8 NFTs
+        let response = await contract.mintNFTs(4); //Mint 4 NFTs
+        
         getNFTData().then((response) => {
           console.log(response);
         })
@@ -40,24 +41,27 @@ function App() {
         
       } catch(err) {
         
-        //console.log(require("./web3/nfts/nft.json"));
-
         getNFTData().then((response) => {
-          console.log(response);
+          let result:object = {
+            "creator_wallet_id": slectedAddress,
+            "creator_network": chainId == "0x3" ? "Ropesten" : "Other Network",
+            "assets": response
+          }
+          console.log(result);
         })
         .catch((error) => {
           //TODO: You should do something when there are errors
           console.log("Nothing to show");
         });
       }
-  },[])
+  },[slectedAddress, chainId])
 
   return (
     <div className="App">
       <p>{slectedAddress}</p>
       <p>Network: {chainId == "0x3" ? "Ropesten" : "Other Network"}</p>
       <div>
-        <button onClick={enable}>Enable Web3</button>
+        <button onClick={connectWallet} disabled={chainId != "0x00"}>Connect Wallet</button>
       </div>
       <div>
         <button onClick={callContractMethods} disabled={chainId == "0x00"}>Mint</button>

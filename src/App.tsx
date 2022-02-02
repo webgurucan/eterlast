@@ -53,7 +53,7 @@ const App: FC = () => {
         //At the moment, it will be called since mintNFT will be failed since wrong smart contract Address
         showNFTData();
       }
-  },[contract, showNFTData])
+  },[])
 
   return (
     <div className="App">

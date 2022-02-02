@@ -33,7 +33,7 @@ const App: FC = () => {
     getNFTData().then((response) => {
       let result:object = {
         "creator_wallet_id": slectedAddress,
-        "creator_network": chainId == "0x3" ? "Ropesten" : "Other Network",
+        "creator_network": chainId === "0x3" ? "Ropesten" : "Other Network",
         "assets": response
       }
       console.log(result);
@@ -53,17 +53,17 @@ const App: FC = () => {
         //At the moment, it will be called since mintNFT will be failed since wrong smart contract Address
         showNFTData();
       }
-  },[slectedAddress, chainId])
+  },[contract, showNFTData])
 
   return (
     <div className="App">
       <p>{slectedAddress}</p>
-      <p>Network: {chainId == "0x3" ? "Ropesten" : "Other Network"}</p>
+      <p>Network: {chainId === "0x3" ? "Ropesten" : "Other Network"}</p>
       <div>
-        <button onClick={connectWallet} disabled={chainId != "0x00"}>Connect Wallet</button>
+        <button onClick={connectWallet} disabled={chainId !== "0x00"}>Connect Wallet</button>
       </div>
       <div>
-        <button onClick={callContractMethods} disabled={chainId == "0x00"}>Mint</button>
+        <button onClick={callContractMethods} disabled={chainId === "0x00"}>Mint</button>
       </div>
     </div>
   );

@@ -1,0 +1,59 @@
+{
+    "assets": [
+        {
+        "asset_id": 0,
+        "name": "NFT1",
+        "picture": "url_bassed_picture",
+        "external_link": "link_your_item_web_page_info",
+        "description": "text",
+        "collection": "number_id",
+        "supply": "number_copies",
+        "royalties": "amount_royalty",
+        "date_of_creation": "current_date"
+        },
+        {
+            "asset_id": 1,
+            "name": "NFT1",
+            "picture": "url_bassed_picture",
+            "external_link": "link_your_item_web_page_info",
+            "description": "text",
+            "collection": "number_id",
+            "supply": "number_copies",
+            "royalties": "amount_royalty",
+            "date_of_creation": "current_date"
+            },
+            {
+                "asset_id": 2,
+                "name": "NFT1",
+                "picture": "url_bassed_picture",
+                "external_link": "link_your_item_web_page_info",
+                "description": "text",
+                "collection": "number_id",
+                "supply": "number_copies",
+                "royalties": "amount_royalty",
+                "date_of_creation": "current_date"
+                },
+                {
+                    "asset_id": 3,
+                    "name": "NFT1",
+                    "picture": "url_bassed_picture",
+                    "external_link": "link_your_item_web_page_info",
+                    "description": "text",
+                    "collection": "number_id",
+                    "supply": "number_copies",
+                    "royalties": "amount_royalty",
+                    "date_of_creation": "current_date"
+                    },
+                    {
+                        "asset_id": 4,
+                        "name": "NFT1",
+                        "picture": "url_bassed_picture",
+                        "external_link": "link_your_item_web_page_info",
+                        "description": "text",
+                        "collection": "number_id",
+                        "supply": "number_copies",
+                        "royalties": "amount_royalty",
+                        "date_of_creation": "current_date"
+                        }
+    ]
+}
